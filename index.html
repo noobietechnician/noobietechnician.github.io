@@ -122,7 +122,30 @@
   <div class="container" style="background-color: black;color:#fff;">
     <p>@ 2025 Yosia | Seluruh elemen pada blog digenerate oleh AI dan dihosting menggunakan Github Pages</p>
   </div>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyC2xyOaubmJcHTQmdhFhXVCdxcKJJdw7zU",
+    authDomain: "personalblog-d18c6.firebaseapp.com",
+    databaseURL: "https://personalblog-d18c6-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "personalblog-d18c6",
+    storageBucket: "personalblog-d18c6.firebasestorage.app",
+    messagingSenderId: "224512773440",
+    appId: "1:224512773440:web:316b1e7fa2dbd00a647ea5",
+    measurementId: "G-ZTF5178QQS"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
   <script src="js/script.js"></script>
 </body>
 
