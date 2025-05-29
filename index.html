@@ -145,6 +145,21 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+  // Inisialisasi Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    const counterRef = db.ref("visitorCount");
+
+    // Update nilai di database (increment 1)
+    counterRef.transaction(current => {
+      return (current || 0) + 1;
+    });
+
+    // Tampilkan jumlah pengunjung
+    counterRef.on("value", snapshot => {
+      document.getElementById("visitor-count").innerText = snapshot.val();
+    });
 </script>
   <script src="js/script.js"></script>
 </body>
