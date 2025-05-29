@@ -1,56 +1,129 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WELCOME DUDE</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>PERSONAL PORTOFOLIO</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <header>
-    <nav class="navbar">
-      <h1 class="logo">NOOBIE TECHNICIAN</h1>
-      <div class="hamburger" id="hamburger">
-        &#9776;
-      </div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#tentang">Tentang</a></li>
-        <li><a href="#portofolio">Portofolio</a></li>
-        <li><a href="#kontak">Kontak</a></li>
-      </ul>
-    </nav>
+    <div class="container">
+      <div class="logo">IOCCIA</div>
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#projects">Tentang Saya</a>
+        <a href="#skills">Wiki</a>
+        <a href="#skills">Kontak</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="hero-content">
-      <h2>Halo, saya YOSIA</h2>
-      <p>Seorang aktivis IT yang saat ini aktif sebagai Teknisi Jaringan di salah satu penyedia jasa jaringan internet.</p>
-      <a href="#portofolio" class="btn">Lihat Karya Saya</a>
+      <h2>Personal Portofolio</h2>
+      <p>Dibuat untuk mengisi waktu luang saya ketika sedang tidak ada job</p>
     </div>
   </section>
 
-  <section id="tentang" class="about">
+  <section class="slider" id="projects">
+    <div class="slides-wrapper">
+      <div class="slide">
+        <div class="slide-card">
+          <img src="images/pole.jpeg" alt="Proyek Jaringan">
+          <div class="card-content">
+            <h3>Penanaman Pole</h3>
+            <p>Penanaman tiang yang digunakan dalam pendistribusian jaringan dengan media Fiber Optic</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-card">
+          <img src="images/ftthmaintenance.jpeg" alt="Maintenances">
+          <div class="card-content">
+            <h3>Fiber Maintenances</h3>
+            <p>Pemeliharaan serta perbaikan fiber optic dengan estimasi waktu sesegera mungkin</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-card">
+          <img src="images/backbonefig8.jpeg" alt="Penarikan Backbone">
+          <div class="card-content">
+            <h3>Penarikan Backbone</h3>
+            <p>Penarikan backbone tipe Kabel ADSS di area Sungai Rumbai bersama di Runsnet</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-card">
+          <img src="images/sertifikasi.jpeg" alt="Pelatihan Sertifikasi FTTH">
+          <div class="card-content">
+            <h3>Pelatihan Sertifikasi FTTH</h3>
+            <p>Bersama tim dari Rubyan Network Solution mengikuti training dan sertifikasi FTTH Planning & Design yang
+              diadakan oleh Voltech dan APJII Sumsel </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button onclick="moveSlide(0)">1</button>
+      <button onclick="moveSlide(1)">2</button>
+      <button onclick="moveSlide(2)">3</button>
+      <button onclick="moveSlide(3)">4</button>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <h2>Keahlian Saya</h2>
+    <div class="skill">
+      <div class="skill-label">Jaringan</div>
+      <div class="skill-bar">
+        <div class="skill-fill" data-percent="90%"></div>
+      </div>
+    </div>
+    <div class="skill">
+      <div class="skill-label">Server & Sistem Operasi</div>
+      <div class="skill-bar">
+        <div class="skill-fill" data-percent="50%"></div>
+      </div>
+    </div>
+    <div class="skill">
+      <div class="skill-label">Elektronika</div>
+      <div class="skill-bar">
+        <div class="skill-fill" data-percent="15%"></div>
+      </div>
+    </div>
+    <div class="skill">
+      <div class="skill-label">Pemrograman</div>
+      <div class="skill-bar">
+        <div class="skill-fill" data-percent="10%"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aboutme">
     <h2>Tentang Saya</h2>
-    <p>Saya memiliki pengalaman dalam membangun website modern, responsive, dan user-friendly menggunakan teknologi web terbaru.</p>
+    <p>Hanyalah seorang aktivis yang secara aktif mengikuti perkembangan dunia teknologi. Dan saat ini sedang aktif
+      bekerja sebagai teknisi di salah satu Penyedia Jasa Layanan Internet lokal Bengkulu</p>
+    <br><button class="tomboldekoratif">Biografi</button>
   </section>
 
-  <section id="portofolio" class="portfolio">
-    <h2>Portofolio</h2>
-    <div class="portfolio-grid">
-      <div class="card">Proyek 1</div>
-      <div class="card">Proyek 2</div>
-      <div class="card">Proyek 3</div>
-    </div>
-  </section>
+  <div class="container" style="background-color: black;color:#fff;">
+    <p>@ 2025 Yosia | Seluruh elemen pada blog digenerate oleh AI dan dihosting menggunakan Github Pages</p>
+  </div>
 
-  <section id="kontak" class="contact">
-    <h2>Kontak</h2>
-    <p>Email: yosyapanjaitan0@email.com</p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Yosia. Semua Hak Dilindungi.</p>
-  </footer>
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
