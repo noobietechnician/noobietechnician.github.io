@@ -81,7 +81,7 @@ nav a:hover {
 
 /* Hero */
 .hero {
-  background-image: url('../images/fiberselfie-chatgpt.jpeg') no-repeat center center/cover;
+  background-image: url('fiberselfie-chatgpt.jpeg') no-repeat center center/cover;
   height: 100vh;
   display: flex;
   align-items: center;
