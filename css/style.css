@@ -1,0 +1,290 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  background-color: #f9f9f9;
+}
+
+/* Navbar */
+header {
+  background-color: #222;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+nav {
+  display: flex;
+  gap: 1px;
+}
+
+nav a {
+  color: #fff;
+  padding: 10px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #222;
+  background: white;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #333;
+    flex-direction: column;
+    width: 200px;
+    display: none;
+  }
+
+  #menu-toggle:checked+.menu-icon+nav {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+    color: white;
+  }
+}
+
+/* Hero */
+.hero {
+  background: url('images/fiberselfie-chatgpt.jpeg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(5px);
+  transform: scale(1.05);
+  /* sedikit lebih besar agar blur tidak terpotong */
+  z-index: 0;
+}
+
+.hero .hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.hero p {
+  margin-top: 1rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* Pastikan semua slide hidden secara default */
+.slide {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  gap: 2rem;
+}
+
+
+
+/* Saat slide aktif (JS set display:flex), tetap flex */
+.slide[style*="display: flex"] {
+  display: flex !important;
+}
+
+/* Slider */
+.slider {
+  margin: 3rem auto;
+  max-width: 800px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slides-wrapper {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(.77,0,.18,1);
+  will-change: transform;
+  width: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+/* Card di dalam slide */
+.slide-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-card:hover {
+  transform: translateY(-5px);
+}
+
+.slide-card img {
+  width: 100%;
+  height: auto;      /* atur tinggi sesuai kebutuhan */
+  object-fit: cover;  /* gambar akan crop agar proporsional */
+  display: block;
+}
+
+.slide-card .card-content {
+  padding: 1rem;
+}
+
+/* Responsive: satu card per baris di layar kecil */
+@media (max-width: 700px) {
+  .slide[style*="display: flex"] {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .slide-card {
+    max-width: 100%;
+  }
+}
+
+/* Slider Controls */
+.slider-controls {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.slider-controls button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #e0e7ff;
+  color: #222;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 
+    background 0.3s,
+    color 0.3s,
+    border 0.3s,
+    box-shadow 0.3s;
+}
+
+/* Aktifkan efek biru & glow pada tombol aktif */
+.slider-controls button.active {
+  background: #2563eb;
+  color: #fff;
+  border: 2px solid #2563eb;
+  box-shadow: 0 0 12px 2px #60a5fa, 0 0 4px 1px #2563eb;
+}
+
+.aboutme {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Skills */
+.skills {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.skill {
+  margin-bottom: 1.5rem;
+}
+
+.skill-label {
+  margin-bottom: 0.5rem;
+}
+
+.skill-bar {
+  background: #eee;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 20px;
+  background: var(--skill-color, #f37208);
+  width: 0;
+  transition: width 1.5s ease-in-out, background 0.5s;
+}
+
+/* TOMBOL */
+.tomboldekoratif {
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
+
+.tomboldekoratif:hover {
+  background-color: antiquewhite;
+  color: black;
+}
