@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PERSONAL PORTOFOLIO</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="assets/images/android-chrome-192x192.png" type="image/x-icon">
+  <link rel="stylesheet" href="src/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
@@ -19,9 +20,9 @@
       <label for="menu-toggle" class="menu-icon">&#9776;</label>
       <nav>
         <a href="#home">Home</a>
-        <a href="#projects">Tentang Saya</a>
-        <a href="#skills">Wiki</a>
-        <a href="#skills">Kontak</a>
+        <a href="content/main.html">Wiki</a>
+        <a href="aboutme/aboutme.html">Tentang Saya</a>
+        <a href="#contact">Kontak</a>
       </nav>
     </div>
   </header>
@@ -30,48 +31,49 @@
     <div class="hero-content">
       <h2>Personal Portofolio</h2>
       <p>Dibuat untuk mengisi waktu luang saya ketika sedang tidak ada job</p>
+      <p style="margin-top: 10px;">Baca Artikel Klik Tombol di Bawah</p>
+      <button class="tomboldekoratif" style="margin:10px">
+        <a href="content/main.html">DIRECT TO WIKI</a>
+      </button>
     </div>
   </section>
 
   <section class="slider" id="projects">
+    <h2 style="text-decoration: underline; text-align:center;">Galeri Singkat</h2>
     <div class="slides-wrapper">
       <div class="slide">
         <div class="slide-card">
-          <img src="images/pole.jpeg" alt="Proyek Jaringan">
+          <img src="assets/images/pole.jpeg" alt="Proyek Jaringan">
           <div class="card-content">
-            <h3>Penanaman Pole</h3>
+            <h3>Penanaman Tiang</h3>
             <p>Penanaman tiang yang digunakan dalam pendistribusian jaringan dengan media Fiber Optic</p>
           </div>
         </div>
       </div>
-
       <div class="slide">
         <div class="slide-card">
-          <img src="images/ftthmaintenance.jpeg" alt="Maintenances">
+          <img src="assets/images/ftthmaintenance.jpeg" alt="Maintenances">
           <div class="card-content">
             <h3>Fiber Maintenances</h3>
             <p>Pemeliharaan serta perbaikan fiber optic dengan estimasi waktu sesegera mungkin</p>
           </div>
         </div>
       </div>
-
       <div class="slide">
         <div class="slide-card">
-          <img src="images/backbonefig8.jpeg" alt="Penarikan Backbone">
+          <img src="assets/images/backbonefig8.jpeg" alt="Backbone">
           <div class="card-content">
             <h3>Penarikan Backbone</h3>
             <p>Penarikan backbone tipe Kabel ADSS di area Sungai Rumbai bersama di Runsnet</p>
           </div>
         </div>
       </div>
-
       <div class="slide">
         <div class="slide-card">
-          <img src="images/sertifikasi.jpeg" alt="Pelatihan Sertifikasi FTTH">
+          <img src="assets/images/sertifikasi.jpeg" alt="Pelatihan Sertifikasi FTTH">
           <div class="card-content">
             <h3>Pelatihan Sertifikasi FTTH</h3>
-            <p>Bersama tim dari Rubyan Network Solution mengikuti training dan sertifikasi FTTH Planning & Design yang
-              diadakan oleh Voltech dan APJII Sumsel </p>
+            <p>Bersama tim dari Rubyan Network Solution mengikuti training dan sertifikasi FTTH Planning & Design yang diadakan oleh Voltech dan APJII Sumsel</p>
           </div>
         </div>
       </div>
@@ -114,35 +116,60 @@
 
   <section class="aboutme">
     <h2>Tentang Saya</h2>
-    <p>Hanyalah seorang aktivis yang secara aktif mengikuti perkembangan dunia teknologi. Dan saat ini sedang aktif
-      bekerja sebagai teknisi di salah satu Penyedia Jasa Layanan Internet lokal Bengkulu</p>
-    <br><button class="tomboldekoratif">Biografi</button>
+    <p>Hanyalah seorang aktivis yang secara aktif mengikuti perkembangan dunia teknologi. Dan saat ini sedang aktif bekerja sebagai teknisi di salah satu Penyedia Jasa Layanan Internet lokal Bengkulu</p>
+    <br>
+    <button class="tomboldekoratif">Biografi</button>
   </section>
 
-  <div class="container" style="background-color: black;color:#fff;">
-    <p>@ 2025 Yosia | Seluruh elemen pada blog digenerate oleh AI dan dihosting menggunakan Github Pages</p>
-  </div>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  <footer class="footer-contact" id="contact">
+    <div class="footer-contact-list">
+      <a href="mailto:yosyapanjaitan0@gmail.com" target="_blank" title="Email">📧 Email</a>
+      <a href="https://wa.me/6285874137148" target="_blank" title="WhatsApp">📱 WhatsApp</a>
+      <a href="https://github.com/yourusername" target="_blank" title="GitHub">🐙 GitHub</a>
+      <a href="#" target="_blank" title="LinkedIn">🔗 LinkedIn</a>
+      <a href="https://t.me/yosiapanjaitan" target="_blank" title="Telegram">🔗 Telegram</a>
+    </div>
+    <p style="margin-top:1rem;font-size:0.95rem;">
+      Jumlah Pengunjung: <span id="visitor-count">...</span>
+    </p>
+    <hr>
+    <p style="font-style: italic;">@2025 Kode Sumber digenerate menggunakan AI dan dihosting melalui Github Pages</p>
+  </footer>
+  <!-- Firebase scripts di sini -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <script>
+    // Konfigurasi Firebase kamu
+    const firebaseConfig = {
+      apiKey: "AIzaSyBltHfOIzB_MC3LE8S1nT8JvMQnJlLAnes",
+      authDomain: "personalvisitor-7bbdb.firebaseapp.com",
+      databaseURL: "https://personalvisitor-7bbdb-default-rtdb.firebaseio.com",
+      projectId: "personalvisitor-7bbdb",
+      storageBucket: "personalvisitor-7bbdb.appspot.com",
+      messagingSenderId: "558526780219",
+      appId: "1:558526780219:web:47cc4febc551e2e4f99d1e"
+    };
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyBltHfOIzB_MC3LE8S1nT8JvMQnJlLAnes",
-    authDomain: "personalvisitor-7bbdb.firebaseapp.com",
-    projectId: "personalvisitor-7bbdb",
-    storageBucket: "personalvisitor-7bbdb.firebasestorage.app",
-    messagingSenderId: "558526780219",
-    appId: "1:558526780219:web:47cc4febc551e2e4f99d1e"
-  };
+    // Inisialisasi Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
-</script>
-  <script src="js/script.js"></script>
+    // Fungsi update dan tampilkan jumlah pengunjung
+    function updateVisitorCount() {
+      const counterRef = db.ref('visitorCount');
+      counterRef.transaction(current => (current || 0) + 1)
+        .then(result => {
+          document.getElementById('visitor-count').textContent = result.snapshot.val();
+        });
+      // Update realtime jika ada perubahan
+      counterRef.on('value', snapshot => {
+        document.getElementById('visitor-count').textContent = snapshot.val();
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', updateVisitorCount);
+  </script>
+  <script src="src/js/script.js"></script>
 </body>
 
 </html>
