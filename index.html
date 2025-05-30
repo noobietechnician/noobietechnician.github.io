@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <script src="https://openfpcdn.io/fingerprintjs/v3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
 </head>
 
 <body>
@@ -157,40 +157,35 @@
 
     // Fungsi update dan tampilkan jumlah pengunjung
 
-  function updateVisitorCount() {
-    FingerprintJS.load().then(fp => {
-      fp.get().then(result => {
-        const visitorId = result.visitorId;
-        console.log("Visitor ID:", visitorId);
-        
-        const visitorsRef = db.ref('uniqueVisitors/' + visitorId);
+  function updateVisitorCount() {FingerprintJS.load().then(fp => {
+  fp.get().then(result => {
+    const visitorId = result.visitorId;
+    console.log("Visitor ID:", visitorId);
 
-        // Cek apakah fingerprint sudah pernah dikunjungi
-        visitorsRef.once('value')
-          .then(snapshot => {
-            if (!snapshot.exists()) {
-              // Belum ada -> pengunjung baru
-              visitorsRef.set(true); // tandai pengunjung ini
-              console.log("Pengunjung baru? ", !snapshot.exists());
-              
-              // Tambahkan ke counter global
-              const counterRef = db.ref('visitorCount');
-              counterRef.transaction(current => (current || 0) + 1)
-                .then(result => {
-                  document.getElementById('visitor-count').textContent = result.snapshot.val();
-                })
-                .catch(error => {
-                  console.error("Gagal update jumlah pengunjung:", error);
-                });
-            } else {
-              // Sudah pernah, cukup tampilkan angka
-              db.ref('visitorCount').on('value', snapshot => {
-                document.getElementById('visitor-count').textContent = snapshot.val();
-              });
-            }
+    const visitorsRef = db.ref('uniqueVisitors/' + visitorId);
+
+    visitorsRef.once('value')
+      .then(snapshot => {
+        if (!snapshot.exists()) {
+          console.log("Pengunjung baru? ", true);
+          visitorsRef.set(true);
+          const counterRef = db.ref('visitorCount');
+          counterRef.transaction(current => (current || 0) + 1)
+            .then(result => {
+              document.getElementById('visitor-count').textContent = result.snapshot.val();
+            })
+            .catch(error => {
+              console.error("Gagal update jumlah pengunjung:", error);
+            });
+        } else {
+          db.ref('visitorCount').on('value', snapshot => {
+            document.getElementById('visitor-count').textContent = snapshot.val();
           });
+        }
       });
-    });
+  });
+});
+
   }
 
   document.addEventListener('DOMContentLoaded', updateVisitorCount);
