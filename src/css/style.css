@@ -371,6 +371,22 @@ nav a:hover {
   color: #fff;
 }
 
+/* Untuk gambar di dalam .footer-contact-list a */
+.footer-contact-list a {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  /* ...properti lain... */
+}
+
+.footer-contact-list a img {
+  height: 1.2em;   /* Sesuaikan dengan ukuran font */
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.3em;
+}
+
 @media (max-width: 600px) {
   .contact-list {
     flex-direction: column;
