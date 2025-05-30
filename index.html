@@ -130,11 +130,27 @@
       <a href="#" target="_blank" title="LinkedIn">🔗 LinkedIn</a>
       <a href="https://t.me/yosiapanjaitan" target="_blank" title="Telegram">🔗 Telegram</a>
     </div>
-    <p style="margin-top:1rem;font-size:0.95rem;">
-      Jumlah Pengunjung: <span id="visitor-count">...</span>
-    </p>
-    <hr>
-    <p style="font-style: italic;">@2025 Kode Sumber digenerate menggunakan AI dan dihosting melalui Github Pages</p>
+
+    <div style="display: flex; justify-content: center; margin-top:1.5rem;">
+      <table style="background:#f8fafc;border-radius:10px;box-shadow:0 2px 8px #e0e7ef;padding:0.7rem 1.2rem;font-size:0.98rem;">
+        <tr>
+          <td style="padding:0.4rem 1.2rem;font-weight:600;">👁️ Jumlah Pengunjung</td>
+          <td id="visitor-count" style="padding:0.4rem 1.2rem;">...</td>
+        </tr>
+        <tr>
+          <td style="padding:0.4rem 1.2rem;font-weight:600;">🌐 IP Kamu</td>
+          <td id="client-ip" style="padding:0.4rem 1.2rem;">...</td>
+        </tr>
+        <tr>
+          <td style="padding:0.4rem 1.2rem;font-weight:600;">📍 Lokasi</td>
+          <td id="client-location" style="padding:0.4rem 1.2rem;">...</td>
+        </tr>
+        <tr>
+          <td style="padding:0.4rem 1.2rem;font-weight:600;">⏰ Waktu</td>
+          <td id="client-time" style="padding:0.4rem 1.2rem;">...</td>
+        </tr>
+      </table>
+    </div>
   </footer>
   <!-- Firebase scripts di sini -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
@@ -189,6 +205,33 @@
   }
 
   document.addEventListener('DOMContentLoaded', updateVisitorCount);
+    // Ambil IP dan lokasi client
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('client-ip').textContent = data.ip || 'Tidak diketahui';
+        let lokasi = '';
+        if (data.city) lokasi += data.city + ', ';
+        if (data.region) lokasi += data.region + ', ';
+        if (data.country_name) lokasi += data.country_name;
+        document.getElementById('client-location').textContent = lokasi || 'Tidak diketahui';
+      })
+      .catch(() => {
+        document.getElementById('client-ip').textContent = 'Tidak diketahui';
+        document.getElementById('client-location').textContent = 'Tidak diketahui';
+      });
+
+    // Tampilkan waktu lokal client
+    function updateTime() {
+      const now = new Date();
+      const waktu = now.toLocaleString('id-ID', {
+        weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+      });
+      document.getElementById('client-time').textContent = waktu;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
 </script>
   <script src="src/js/script.js"></script>
 </body>
