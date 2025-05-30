@@ -128,7 +128,7 @@ function renderComments(snapshot) {
             const div = document.createElement('div');
             div.style = "background:#f8fafc;margin-bottom:0.7rem;padding:0.7rem 1rem;border-radius:8px;box-shadow:0 1px 4px #e0e7ef;font-size:1.05rem;position:relative;";
             div.innerHTML = `
-                <div style="color:#2563eb;font-size:0.92rem;font-weight:700;">Anonim</div>
+                <div style="color:#2563eb;font-size:0.92rem;font-weight:700;">Anonymous</div>
                 <div style="margin:0.3rem 0 0.4rem 0;">${escapeHTML(item.text)}</div>
                 <div style="font-size:0.88rem;color:#888;">${waktu}</div>
                 <button class="reply-btn" data-key="${key}" style="margin-top:0.5rem;padding:0.3rem 0.9rem;border-radius:7px;background:#e0e7ff;color:#222;border:none;cursor:pointer;font-size:0.93rem;">Balas</button>
@@ -150,7 +150,7 @@ function renderComments(snapshot) {
                     const replyDiv = document.createElement('div');
                     replyDiv.style = "background:#e0e7ff;margin-bottom:0.5rem;padding:0.5rem 0.8rem;border-radius:7px;font-size:0.98rem;";
                     replyDiv.innerHTML = `
-                        <div style="color:#2563eb;font-size:0.92rem;font-weight:700;">Anonim</div>
+                        <div style="color:#2563eb;font-size:0.92rem;font-weight:700;">Anonymous</div>
                         <div style="margin:0.2rem 0 0.3rem 0;">${escapeHTML(reply.text)}</div>
                         <div style="font-size:0.85rem;color:#666;">${rwaktu}</div>
                     `;
