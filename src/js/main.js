@@ -112,7 +112,7 @@ function escapeHTML(str) {
     });
 }
 
-// Tampilkan komentar
+// Render komentar dan balasan
 function renderComments(snapshot) {
     try {
         const data = snapshot.val();
@@ -126,12 +126,69 @@ function renderComments(snapshot) {
             const item = data[key];
             const waktu = new Date(item.timestamp).toLocaleString('id-ID');
             const div = document.createElement('div');
-            div.style = "background:#f8fafc;margin-bottom:0.7rem;padding:0.7rem 1rem;border-radius:8px;box-shadow:0 1px 4px #e0e7ef;font-size:1.05rem;";
-            div.innerHTML = `<div style="color:#2563eb;font-size:0.92rem;font-weight:700;">Anonim</div>
-        <div style="margin:0.3rem 0 0.4rem 0;">${escapeHTML(item.text)}</div>
-        <div style="font-size:0.88rem;color:#888;">${waktu}</div>`;
+            div.style = "background:#f8fafc;margin-bottom:0.7rem;padding:0.7rem 1rem;border-radius:8px;box-shadow:0 1px 4px #e0e7ef;font-size:1.05rem;position:relative;";
+            div.innerHTML = `
+                <div style="color:#2563eb;font-size:0.92rem;font-weight:700;">Anonim</div>
+                <div style="margin:0.3rem 0 0.4rem 0;">${escapeHTML(item.text)}</div>
+                <div style="font-size:0.88rem;color:#888;">${waktu}</div>
+                <button class="reply-btn" data-key="${key}" style="margin-top:0.5rem;padding:0.3rem 0.9rem;border-radius:7px;background:#e0e7ff;color:#222;border:none;cursor:pointer;font-size:0.93rem;">Balas</button>
+                <form class="reply-form" data-key="${key}" style="display:none;margin-top:0.5rem;">
+                  <textarea rows="2" placeholder="Tulis balasan..." required style="width:100%;padding:0.5rem;border-radius:6px;border:1px solid #ccc;font-family:'Roboto Condensed',Arial,sans-serif;"></textarea>
+                  <button type="submit" style="margin-top:0.3rem;padding:0.3rem 1rem;border-radius:7px;background:#2563eb;color:#fff;border:none;cursor:pointer;font-size:0.93rem;">Kirim Balasan</button>
+                </form>
+                <div class="replies" style="margin-left:1.5rem;margin-top:0.7rem;"></div>
+            `;
             commentsList.appendChild(div);
+
+            // Render replies jika ada
+            if (item.replies) {
+                const repliesDiv = div.querySelector('.replies');
+                const replyKeys = Object.keys(item.replies).sort((a, b) => item.replies[a].timestamp - item.replies[b].timestamp);
+                replyKeys.forEach(rkey => {
+                    const reply = item.replies[rkey];
+                    const rwaktu = new Date(reply.timestamp).toLocaleString('id-ID');
+                    const replyDiv = document.createElement('div');
+                    replyDiv.style = "background:#e0e7ff;margin-bottom:0.5rem;padding:0.5rem 0.8rem;border-radius:7px;font-size:0.98rem;";
+                    replyDiv.innerHTML = `
+                        <div style="color:#2563eb;font-size:0.92rem;font-weight:700;">Anonim</div>
+                        <div style="margin:0.2rem 0 0.3rem 0;">${escapeHTML(reply.text)}</div>
+                        <div style="font-size:0.85rem;color:#666;">${rwaktu}</div>
+                    `;
+                    repliesDiv.appendChild(replyDiv);
+                });
+            }
         });
+
+        // Event untuk tombol balas
+        document.querySelectorAll('.reply-btn').forEach(btn => {
+            btn.onclick = function () {
+                const key = btn.getAttribute('data-key');
+                const form = commentsList.querySelector(`.reply-form[data-key="${key}"]`);
+                form.style.display = form.style.display === 'none' ? 'block' : 'none';
+            };
+        });
+
+        // Event submit balasan
+        document.querySelectorAll('.reply-form').forEach(form => {
+            form.onsubmit = function (e) {
+                e.preventDefault();
+                const key = form.getAttribute('data-key');
+                const textarea = form.querySelector('textarea');
+                const text = textarea.value.trim();
+                if (!text) return;
+                commentsRef.child(key).child('replies').push({
+                    text: text,
+                    timestamp: Date.now()
+                }, function (error) {
+                    if (error) {
+                        alert('Gagal mengirim balasan. Silakan coba lagi.');
+                    }
+                });
+                textarea.value = '';
+                form.style.display = 'none';
+            };
+        });
+
     } catch (err) {
         commentsList.innerHTML = '<div style="color:#e11d48;font-size:0.98rem;">Gagal memuat komentar.</div>';
     }
