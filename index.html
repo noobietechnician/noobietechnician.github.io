@@ -9,8 +9,10 @@
   <link rel="stylesheet" href="src/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
+
 </head>
 
 <body>
@@ -74,7 +76,8 @@
           <img src="assets/images/sertifikasi.jpeg" alt="Pelatihan Sertifikasi FTTH">
           <div class="card-content">
             <h3>Pelatihan Sertifikasi FTTH</h3>
-            <p>Bersama tim dari Rubyan Network Solution mengikuti training dan sertifikasi FTTH Planning & Design yang diadakan oleh Voltech dan APJII Sumsel</p>
+            <p>Bersama tim dari Rubyan Network Solution mengikuti training dan sertifikasi FTTH Planning & Design yang
+              diadakan oleh Voltech dan APJII Sumsel</p>
           </div>
         </div>
       </div>
@@ -117,10 +120,13 @@
 
   <section class="aboutme">
     <h2>Tentang Saya</h2>
-    <p>Hanyalah seorang aktivis yang secara aktif mengikuti perkembangan dunia teknologi. Dan saat ini sedang aktif bekerja sebagai teknisi di salah satu Penyedia Jasa Layanan Internet lokal Bengkulu</p>
+    <p>Hanyalah seorang aktivis yang secara aktif mengikuti perkembangan dunia teknologi. Dan saat ini sedang aktif
+      bekerja sebagai teknisi di salah satu Penyedia Jasa Layanan Internet lokal Bengkulu</p>
     <br>
     <button class="tomboldekoratif">Biografi</button>
   </section>
+
+  <hr style="margin:2.5rem auto 1.5rem auto;max-width:700px;">
 
   <footer class="footer-contact" id="contact">
     <div class="footer-contact-list">
@@ -130,9 +136,9 @@
       <a href="#" target="_blank" title="LinkedIn">🔗 LinkedIn</a>
       <a href="https://t.me/yosiapanjaitan" target="_blank" title="Telegram">🔗 Telegram</a>
     </div>
-
     <div style="display: flex; justify-content: center; margin-top:1.5rem;">
-      <table style="background:#f8fafc;border-radius:10px;box-shadow:0 2px 8px #e0e7ef;padding:0.7rem 1.2rem;font-size:0.98rem;">
+      <table
+        style="background:#f8fafc;border-radius:10px;box-shadow:0 2px 8px #e0e7ef;padding:0.7rem 1.2rem;font-size:0.98rem;">
         <tr>
           <td style="padding:0.4rem 1.2rem;font-weight:600;">👁️ Jumlah Pengunjung</td>
           <td id="visitor-count" style="padding:0.4rem 1.2rem;">...</td>
@@ -151,7 +157,11 @@
         </tr>
       </table>
     </div>
+    <hr>
+    <p style="font-style: italic;">@2025 Seluruh elemen blog dibantu dengan menggunakan AI dan Dihosting Menggunakan
+      Github Pages</p>
   </footer>
+
   <!-- Firebase scripts di sini -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
@@ -172,39 +182,36 @@
     const db = firebase.database();
 
     // Fungsi update dan tampilkan jumlah pengunjung
+    function updateVisitorCount() {
+      FingerprintJS.load().then(fp => {
+        fp.get().then(result => {
+          const visitorId = result.visitorId;
+          const visitorsRef = db.ref('uniqueVisitors/' + visitorId);
 
-  function updateVisitorCount() {FingerprintJS.load().then(fp => {
-  fp.get().then(result => {
-    const visitorId = result.visitorId;
-    console.log("Visitor ID:", visitorId);
-
-    const visitorsRef = db.ref('uniqueVisitors/' + visitorId);
-
-    visitorsRef.once('value')
-      .then(snapshot => {
-        if (!snapshot.exists()) {
-          console.log("Pengunjung baru? ", true);
-          visitorsRef.set(true);
-          const counterRef = db.ref('visitorCount');
-          counterRef.transaction(current => (current || 0) + 1)
-            .then(result => {
-              document.getElementById('visitor-count').textContent = result.snapshot.val();
-            })
-            .catch(error => {
-              console.error("Gagal update jumlah pengunjung:", error);
+          visitorsRef.once('value')
+            .then(snapshot => {
+              if (!snapshot.exists()) {
+                visitorsRef.set(true);
+                const counterRef = db.ref('visitorCount');
+                counterRef.transaction(current => (current || 0) + 1)
+                  .then(result => {
+                    document.getElementById('visitor-count').textContent = result.snapshot.val();
+                  })
+                  .catch(error => {
+                    console.error("Gagal update jumlah pengunjung:", error);
+                  });
+              } else {
+                db.ref('visitorCount').on('value', snapshot => {
+                  document.getElementById('visitor-count').textContent = snapshot.val();
+                });
+              }
             });
-        } else {
-          db.ref('visitorCount').on('value', snapshot => {
-            document.getElementById('visitor-count').textContent = snapshot.val();
-          });
-        }
+        });
       });
-  });
-});
+    }
 
-  }
+    document.addEventListener('DOMContentLoaded', updateVisitorCount);
 
-  document.addEventListener('DOMContentLoaded', updateVisitorCount);
     // Ambil IP dan lokasi client
     fetch('https://ipapi.co/json/')
       .then(res => res.json())
@@ -232,8 +239,38 @@
     }
     setInterval(updateTime, 1000);
     updateTime();
-</script>
+  </script>
   <script src="src/js/script.js"></script>
+  <!-- Pop Up Selamat Datang -->
+  <div id="welcome-popup"
+    style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.55);justify-content:center;align-items:center;">
+    <div
+      style="background:#fff;padding:2rem 2.5rem;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,0.18);text-align:center;max-width:90vw;">
+      <img src="https://media1.tenor.com/images/bdd964b282247a2501eb232e0b8b822e/tenor.gif?itemid=13920167" alt="Logo"
+        style="width:80px;height:80px;margin-bottom:1rem;">
+      <h2 style="font-family:'Roboto Condensed',Arial,sans-serif;font-weight:700;margin-bottom:0.7rem;">Selamat Datang
+      </h2>
+      <p style="font-size:1.1rem;margin-bottom:1.2rem;">Terima kasih telah mengunjungi blog ini!</p>
+      <div id="popup-counter" style="font-size:1.5rem;font-weight:700;color:#2563eb;">3</div>
+    </div>
+  </div>
+  <script>
+    // Pop up hanya muncul sekali per browser
+    if (!localStorage.getItem('welcome_shown')) {
+      document.getElementById('welcome-popup').style.display = 'flex';
+      let counter = 10;
+      const counterEl = document.getElementById('popup-counter');
+      const interval = setInterval(() => {
+        counter--;
+        counterEl.textContent = counter;
+        if (counter === 0) {
+          clearInterval(interval);
+          document.getElementById('welcome-popup').style.display = 'none';
+          localStorage.setItem('welcome_shown', '1');
+        }
+      }, 1000);
+    }
+  </script>
 </body>
 
 </html>
