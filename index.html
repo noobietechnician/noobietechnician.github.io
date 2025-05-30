@@ -10,7 +10,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  // Fingerprint for firebase
   <script src="https://openfpcdn.io/fingerprintjs/v3"></script>
 </head>
 
@@ -157,14 +156,13 @@
     const db = firebase.database();
 
     // Fungsi update dan tampilkan jumlah pengunjung
-    
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
 
   function updateVisitorCount() {
     FingerprintJS.load().then(fp => {
       fp.get().then(result => {
         const visitorId = result.visitorId;
+        console.log("Visitor ID:", visitorId);
+        
         const visitorsRef = db.ref('uniqueVisitors/' + visitorId);
 
         // Cek apakah fingerprint sudah pernah dikunjungi
@@ -173,6 +171,7 @@
             if (!snapshot.exists()) {
               // Belum ada -> pengunjung baru
               visitorsRef.set(true); // tandai pengunjung ini
+              console.log("Pengunjung baru? ", !snapshot.exists());
               
               // Tambahkan ke counter global
               const counterRef = db.ref('visitorCount');
