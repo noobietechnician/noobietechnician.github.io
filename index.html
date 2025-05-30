@@ -6,17 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PERSONAL PORTOFOLIO</title>
   <link rel="icon" href="assets/images/android-chrome-192x192.png" type="image/x-icon">
-  <link rel="stylesheet" href="src/css/style.css" />
+  <link rel="stylesheet" href="src/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="src/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
-
 </head>
 
 <body>
+  <!-- Pop Up Selamat Datang -->
+  <div id="welcome-popup"
+    style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.55);justify-content:center;align-items:center;">
+    <div
+      style="background:#fff;padding:2rem 2.5rem;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,0.18);text-align:center;max-width:90vw;position:relative;">
+      <button id="popup-close"
+        style="position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;background:#f3f4f6;border:none;box-shadow:0 2px 8px #e0e7ef;font-size:1.7rem;line-height:1;color:#888;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+        onmouseover="this.style.background='#e11d48';this.style.color='#fff';"
+        onmouseout="this.style.background='#f3f4f6';this.style.color='#888';" aria-label="Tutup">&times;</button>
+      <img src="https://media1.tenor.com/images/bdd964b282247a2501eb232e0b8b822e/tenor.gif?itemid=13920167" alt="Logo"
+        style="width:80px;height:80px;margin-bottom:1rem;">
+      <h2 style="font-family:'Roboto Condensed',Arial,sans-serif;font-weight:700;margin-bottom:0.7rem;">Selamat Datang
+      </h2>
+      <p style="font-size:1.1rem;margin-bottom:1.2rem;">Terima kasih telah mengunjungi blog ini!</p>
+      <div id="popup-counter" style="font-size:1.5rem;font-weight:700;color:#2563eb;">10</div>
+    </div>
+  </div>
   <header>
+    <!-- Header / Navbar -->
     <div class="container">
       <div class="logo">IOCCIA</div>
       <input type="checkbox" id="menu-toggle">
@@ -29,7 +45,7 @@
       </nav>
     </div>
   </header>
-
+  <!-- Home Section -->
   <section class="hero" id="home">
     <div class="hero-content">
       <h2>Personal Portofolio</h2>
@@ -40,7 +56,7 @@
       </button>
     </div>
   </section>
-
+  <!-- Gallery Section -->
   <section class="slider" id="projects">
     <h2 style="text-decoration: underline; text-align:center;">Galeri Singkat</h2>
     <div class="slides-wrapper">
@@ -89,7 +105,7 @@
       <button onclick="moveSlide(3)">4</button>
     </div>
   </section>
-
+  <!-- Skills Section -->
   <section class="skills" id="skills">
     <h2>Keahlian Saya</h2>
     <div class="skill">
@@ -117,7 +133,27 @@
       </div>
     </div>
   </section>
-
+  <!-- Comments Section -->
+  <hr>
+  <section id="comment-section" style="max-width:600px;margin:2.5rem auto 0 auto;">
+    <button id="toggle-comment"
+      style="display:block;margin:0 auto 1rem auto;padding:0.6rem 1.2rem;border-radius:8px;background:#2563eb;color:#fff;font-family:'Roboto Condensed',Arial,sans-serif;font-weight:700;border:none;cursor:pointer;">
+      Tampilkan Komentar.
+    </button>
+    <div id="comment-box" style="display:none;">
+      <form id="comment-form" style="margin-bottom:1.2rem;">
+        <textarea id="comment-input" rows="3"
+          placeholder="Tulis komentar kamu disini, komentar kamu bersifat anonim...." required
+          style="width:100%;padding:0.7rem;border-radius:8px;border:1px solid #ccc;font-family:'Roboto Condensed',Arial,sans-serif;"></textarea>
+        <button type="submit"
+          style="margin-top:0.7rem;padding:0.5rem 1.2rem;border-radius:8px;background:#2563eb;color:#fff;font-family:'Roboto Condensed',Arial,sans-serif;font-weight:700;border:none;cursor:pointer;">Kirim</button>
+      </form>
+      <div id="comments-list" style="min-height:40px;">
+        <div style="color:#888;font-size:0.98rem;">Belum ada komentar.</div>
+      </div>
+    </div>
+  </section>
+  <!-- About Me Section -->
   <section class="aboutme">
     <h2>Tentang Saya</h2>
     <p>Hanyalah seorang aktivis yang secara aktif mengikuti perkembangan dunia teknologi. Dan saat ini sedang aktif
@@ -125,17 +161,21 @@
     <br>
     <button class="tomboldekoratif">Biografi</button>
   </section>
-
   <hr style="margin:2.5rem auto 1.5rem auto;max-width:700px;">
-
+  <!-- Contact -->
   <footer class="footer-contact" id="contact">
     <div class="footer-contact-list">
-      <a href="mailto:yosyapanjaitan0@gmail.com" target="_blank" title="Email">📧 Email</a>
-      <a href="https://wa.me/6285874137148" target="_blank" title="WhatsApp">📱 WhatsApp</a>
-      <a href="https://github.com/yourusername" target="_blank" title="GitHub">🐙 GitHub</a>
-      <a href="#" target="_blank" title="LinkedIn">🔗 LinkedIn</a>
-      <a href="https://t.me/yosiapanjaitan" target="_blank" title="Telegram">🔗 Telegram</a>
+      <a href="mailto:yosyapanjaitan0@gmail.com" target="_blank" title="Email"><img
+          src="src/img/Android_Email_4.4_Icon.png" alt="">Email</a>
+      <a href="https://wa.me/6285874137148" target="_blank" title="WhatsApp"><img
+          src="src/img/—Pngtree—whatsapp icon whatsapp logo_3584844.png" alt="Deskripsi Simbol"
+          style="width:2rem; height:2rem;"> WhatsApp</a>
+      <!-- <a href="https://github.com/yourusername" target="_blank" title="GitHub">🐙 GitHub</a> -->
+      <!-- <a href="#" target="_blank" title="LinkedIn">🔗 LinkedIn</a> -->
+      <a href="https://t.me/yosiapanjaitan" target="_blank" title="Telegram"><img
+          src="src/img/64px-Telegram_logo.svg.png" alt=""> Telegram</a>
     </div>
+    <!-- Client Side -->
     <div style="display: flex; justify-content: center; margin-top:1.5rem;">
       <table
         style="background:#f8fafc;border-radius:10px;box-shadow:0 2px 8px #e0e7ef;padding:0.7rem 1.2rem;font-size:0.98rem;">
@@ -161,116 +201,12 @@
     <p style="font-style: italic;">@2025 Seluruh elemen blog dibantu dengan menggunakan AI dan Dihosting Menggunakan
       Github Pages</p>
   </footer>
-
-  <!-- Firebase scripts di sini -->
+  <!-- EXTERNAL JS SCRIPTS -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
-  <script>
-    // Konfigurasi Firebase kamu
-    const firebaseConfig = {
-      apiKey: "AIzaSyBltHfOIzB_MC3LE8S1nT8JvMQnJlLAnes",
-      authDomain: "personalvisitor-7bbdb.firebaseapp.com",
-      databaseURL: "https://personalvisitor-7bbdb-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "personalvisitor-7bbdb",
-      storageBucket: "personalvisitor-7bbdb.appspot.com",
-      messagingSenderId: "558526780219",
-      appId: "1:558526780219:web:47cc4febc551e2e4f99d1e"
-    };
-
-    // Inisialisasi Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-
-    // Fungsi update dan tampilkan jumlah pengunjung
-    function updateVisitorCount() {
-      FingerprintJS.load().then(fp => {
-        fp.get().then(result => {
-          const visitorId = result.visitorId;
-          const visitorsRef = db.ref('uniqueVisitors/' + visitorId);
-
-          visitorsRef.once('value')
-            .then(snapshot => {
-              if (!snapshot.exists()) {
-                visitorsRef.set(true);
-                const counterRef = db.ref('visitorCount');
-                counterRef.transaction(current => (current || 0) + 1)
-                  .then(result => {
-                    document.getElementById('visitor-count').textContent = result.snapshot.val();
-                  })
-                  .catch(error => {
-                    console.error("Gagal update jumlah pengunjung:", error);
-                  });
-              } else {
-                db.ref('visitorCount').on('value', snapshot => {
-                  document.getElementById('visitor-count').textContent = snapshot.val();
-                });
-              }
-            });
-        });
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', updateVisitorCount);
-
-    // Ambil IP dan lokasi client
-    fetch('https://ipapi.co/json/')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('client-ip').textContent = data.ip || 'Tidak diketahui';
-        let lokasi = '';
-        if (data.city) lokasi += data.city + ', ';
-        if (data.region) lokasi += data.region + ', ';
-        if (data.country_name) lokasi += data.country_name;
-        document.getElementById('client-location').textContent = lokasi || 'Tidak diketahui';
-      })
-      .catch(() => {
-        document.getElementById('client-ip').textContent = 'Tidak diketahui';
-        document.getElementById('client-location').textContent = 'Tidak diketahui';
-      });
-
-    // Tampilkan waktu lokal client
-    function updateTime() {
-      const now = new Date();
-      const waktu = now.toLocaleString('id-ID', {
-        weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
-        hour: '2-digit', minute: '2-digit', second: '2-digit'
-      });
-      document.getElementById('client-time').textContent = waktu;
-    }
-    setInterval(updateTime, 1000);
-    updateTime();
-  </script>
+  <script src="src/js/firebase-init.js"></script>
+  <script src="src/js/main.js"></script>
   <script src="src/js/script.js"></script>
-  <!-- Pop Up Selamat Datang -->
-  <div id="welcome-popup"
-    style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.55);justify-content:center;align-items:center;">
-    <div
-      style="background:#fff;padding:2rem 2.5rem;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,0.18);text-align:center;max-width:90vw;">
-      <img src="https://media1.tenor.com/images/bdd964b282247a2501eb232e0b8b822e/tenor.gif?itemid=13920167" alt="Logo"
-        style="width:80px;height:80px;margin-bottom:1rem;">
-      <h2 style="font-family:'Roboto Condensed',Arial,sans-serif;font-weight:700;margin-bottom:0.7rem;">Selamat Datang
-      </h2>
-      <p style="font-size:1.1rem;margin-bottom:1.2rem;">Terima kasih telah mengunjungi blog ini!</p>
-      <div id="popup-counter" style="font-size:1.5rem;font-weight:700;color:#2563eb;">3</div>
-    </div>
-  </div>
-  <script>
-    // Pop up hanya muncul sekali per browser
-    if (!localStorage.getItem('welcome_shown')) {
-      document.getElementById('welcome-popup').style.display = 'flex';
-      let counter = 10;
-      const counterEl = document.getElementById('popup-counter');
-      const interval = setInterval(() => {
-        counter--;
-        counterEl.textContent = counter;
-        if (counter === 0) {
-          clearInterval(interval);
-          document.getElementById('welcome-popup').style.display = 'none';
-          localStorage.setItem('welcome_shown', '1');
-        }
-      }, 1000);
-    }
-  </script>
 </body>
 
 </html>
