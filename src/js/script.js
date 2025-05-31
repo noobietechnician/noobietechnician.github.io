@@ -57,34 +57,37 @@ window.addEventListener('DOMContentLoaded', () => {
       slideInterval = setInterval(showNextSlide, 5000);
     });
   });
-});
 
-// Hero Slider
-let heroCurrent = 0;
-const heroSlides = document.querySelectorAll('.hero-slide');
-const heroBtns = document.querySelectorAll('.hero-slider-btn');
-let heroInterval = setInterval(nextHeroSlide, 5000);
+  // HERO SLIDER FIX
+  let heroCurrent = 0;
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  const heroBtns = document.querySelectorAll('.hero-slider-btn');
+  let heroInterval;
 
-function showHeroSlide(idx) {
-  heroSlides.forEach((slide, i) => {
-    slide.classList.toggle('active', i === idx);
-    heroBtns[i].classList.toggle('active', i === idx);
+  function showHeroSlide(idx) {
+    heroSlides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === idx);
+      heroBtns[i].classList.toggle('active', i === idx);
+    });
+    heroCurrent = idx;
+  }
+
+  function nextHeroSlide() {
+    let next = (heroCurrent + 1) % heroSlides.length;
+    showHeroSlide(next);
+  }
+
+  // Bersihkan event listener sebelum menambah baru (opsional, jika script bisa reload)
+  heroBtns.forEach((btn, idx) => {
+    btn.onclick = null;
+    btn.addEventListener('click', () => {
+      showHeroSlide(idx);
+      clearInterval(heroInterval);
+      heroInterval = setInterval(nextHeroSlide, 5000);
+    });
   });
-  heroCurrent = idx;
-}
 
-function nextHeroSlide() {
-  let next = (heroCurrent + 1) % heroSlides.length;
-  showHeroSlide(next);
-}
-
-heroBtns.forEach((btn, idx) => {
-  btn.addEventListener('click', () => {
-    showHeroSlide(idx);
-    clearInterval(heroInterval);
-    heroInterval = setInterval(nextHeroSlide, 5000);
-  });
+  // Inisialisasi pertama
+  showHeroSlide(0);
+  heroInterval = setInterval(nextHeroSlide, 5000);
 });
-
-// Inisialisasi pertama
-showHeroSlide(0);
