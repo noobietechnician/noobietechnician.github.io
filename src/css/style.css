@@ -40,7 +40,7 @@ header {
   left: 0;
   width: 100vw;
   z-index: 100;
-  background: rgba(17, 1, 73, 0.97);
+  background: rgba(13, 1, 56, 0.97);
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   transition: background 0.3s;
   height: 64px; /* tinggi navbar, sesuaikan jika perlu */
@@ -585,7 +585,7 @@ footer p {
   pointer-events: auto;
 }
 .hero-caption {
-  background: rgba(14,14,58,0.72);
+  background: rgba(68, 68, 68, 0.5);
   color: #fff;
   padding: 2.5rem 2.5rem;
   border-radius: 18px;
