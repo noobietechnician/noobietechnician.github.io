@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/images/android-chrome-192x192.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
+    <title>footer</title>
+</head>
+
+<body>
+
+    <footer class="footer-contact" id="contact">
+        <div class="footer-contact-list">
+            <a href="mailto:yosyapanjaitan0@gmail.com" target="_blank" title="Email"><img
+                    src="../src/img/Android_Email_4.4_Icon.png" alt="">Email</a>
+            <a href="https://wa.me/6285874137148" target="_blank" title="WhatsApp"><img
+                    src="../src/img/—Pngtree—whatsapp icon whatsapp logo_3584844.png" alt="Deskripsi Simbol"
+                    style="width:2rem; height:2rem;"> WhatsApp</a>
+            <!-- <a href="https://github.com/yourusername" target="_blank" title="GitHub">🐙 GitHub</a> -->
+            <!-- <a href="#" target="_blank" title="LinkedIn">🔗 LinkedIn</a> -->
+            <a href="https://t.me/yosiapanjaitan" target="_blank" title="Telegram"><img
+                    src="../src/img/64px-Telegram_logo.svg.png" alt=""> Telegram</a>
+        </div>
+        <!-- Client Side -->
+        <div style="display: flex; justify-content: center; margin-top:1.5rem;">
+            <table
+                style="background:#f8fafc;border-radius:10px;box-shadow:0 2px 8px #e0e7ef;padding:0.7rem 1.2rem;font-size:0.98rem;">
+                <tr>
+                    <td style="padding:0.4rem 1.2rem;font-weight:600;">👁️ Jumlah Pengunjung</td>
+                    <td id="visitor-count" style="padding:0.4rem 1.2rem;">...</td>
+                </tr>
+                <tr>
+                    <td style="padding:0.4rem 1.2rem;font-weight:600;">🌐 IP Kamu</td>
+                    <td id="client-ip" style="padding:0.4rem 1.2rem;">...</td>
+                </tr>
+                <tr>
+                    <td style="padding:0.4rem 1.2rem;font-weight:600;">📍 Lokasi</td>
+                    <td id="client-location" style="padding:0.4rem 1.2rem;">...</td>
+                </tr>
+                <tr>
+                    <td style="padding:0.4rem 1.2rem;font-weight:600;">⏰ Waktu</td>
+                    <td id="client-time" style="padding:0.4rem 1.2rem;">...</td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+        <p style="font-style: italic;">@2025 Seluruh elemen blog dibantu dengan menggunakan AI dan Dihosting Menggunakan
+            Github Pages</p>
+    </footer>
+    <!-- EXTERNAL JS SCRIPTS -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+    <script src="js/firebase-init.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
