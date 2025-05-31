@@ -34,7 +34,9 @@
   <header>
     <!-- Header / Navbar -->
     <div class="container">
-      <div class="logo">IOCCIA</div>
+      <a href="#" class="logo">
+        <img src="assets/images/logobygpt.png" alt="Logo" id="navbar-logo">
+      </a>
       <input type="checkbox" id="menu-toggle">
       <label for="menu-toggle" class="menu-icon">&#9776;</label>
       <nav>
@@ -48,15 +50,30 @@
     </div>
   </header>
   <!-- Home Section -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h2>Personal Portofolio</h2>
-      <p>Dibuat untuk mengisi waktu luang saya ketika sedang tidak ada job</p>
-      <p style="margin-top: 10px;">Baca Artikel Klik Tombol di Bawah</p>
-      <button class="tomboldekoratif" style="margin:10px">
-        <a href="content/main.html">DIRECT TO WIKI</a>
-      </button>
-
+  <section class="hero-slider" id="home">
+    <div class="hero-slide active" style="background-image: url('assets/images/ftthmaintenance.jpeg');">
+      <div class="hero-caption">
+        <h2>Fiber Maintenance</h2>
+        <p>Pemeliharaan dan perbaikan jaringan fiber optic dengan respon cepat dan profesional.</p>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image: url('assets/images/backbonefig8.jpeg');">
+      <div class="hero-caption">
+        <h2>Penarikan Backbone</h2>
+        <p>Instalasi backbone kabel ADSS di berbagai area, dikerjakan oleh tim berpengalaman.</p>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image: url('assets/images/IMG-20221219-POPCDE.jpg');">
+      <div class="hero-caption">
+        <h2>Instalasi POP</h2>
+        <p>Pembangunan Point of Presence (POP) untuk perusahaan dan institusi.</p>
+      </div>
+    </div>
+    <div class="hero-slider-controls">
+      <button class="hero-slider-btn active" data-slide="0"></button>
+      <button class="hero-slider-btn" data-slide="1"></button>
+      <button class="hero-slider-btn" data-slide="2"></button>
+    </div>
   </section>
   <!-- Gallery Section -->
    <hr>

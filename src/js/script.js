@@ -58,3 +58,33 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// Hero Slider
+let heroCurrent = 0;
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroBtns = document.querySelectorAll('.hero-slider-btn');
+let heroInterval = setInterval(nextHeroSlide, 5000);
+
+function showHeroSlide(idx) {
+  heroSlides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === idx);
+    heroBtns[i].classList.toggle('active', i === idx);
+  });
+  heroCurrent = idx;
+}
+
+function nextHeroSlide() {
+  let next = (heroCurrent + 1) % heroSlides.length;
+  showHeroSlide(next);
+}
+
+heroBtns.forEach((btn, idx) => {
+  btn.addEventListener('click', () => {
+    showHeroSlide(idx);
+    clearInterval(heroInterval);
+    heroInterval = setInterval(nextHeroSlide, 5000);
+  });
+});
+
+// Inisialisasi pertama
+showHeroSlide(0);
