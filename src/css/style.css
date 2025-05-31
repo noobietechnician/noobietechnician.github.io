@@ -435,6 +435,24 @@ footer p {
   text-align: center;
 }
 
+.custom-audio {
+  background: rgba(37, 99, 235, 0.13);
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
+  padding: 10px 18px;
+  backdrop-filter: blur(2px);
+  margin: 0 auto;
+  display: block;
+  width: 90%;
+  max-width: 400px;
+  transition: box-shadow 0.2s;
+}
+
+.custom-audio:hover, .custom-audio:focus {
+  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.16);
+  background: rgba(37, 99, 235, 0.18);
+}
+
 @media (max-width: 600px) {
   .footer-contact-list {
     flex-direction: column;
