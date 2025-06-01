@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let color = 'rgb(220, 38, 38)'; // merah
     if (value >= 70) color = 'rgb(34,197,94)'; // hijau
     else if (value >= 40) color = 'rgb(251,191,36)'; // kuning
-    bar.style.setProperty('--skill-color', color);
+    bar.style.background = color;
     setTimeout(() => {
       bar.style.width = percent;
     }, 300);
@@ -77,17 +77,65 @@ window.addEventListener('DOMContentLoaded', () => {
     showHeroSlide(next);
   }
 
-  // Bersihkan event listener sebelum menambah baru (opsional, jika script bisa reload)
   heroBtns.forEach((btn, idx) => {
-    btn.onclick = null;
-    btn.addEventListener('click', () => {
+    btn.onclick = () => {
       showHeroSlide(idx);
       clearInterval(heroInterval);
       heroInterval = setInterval(nextHeroSlide, 5000);
-    });
+    };
   });
 
-  // Inisialisasi pertama
   showHeroSlide(0);
   heroInterval = setInterval(nextHeroSlide, 5000);
+});
+
+// About Slide Logic
+let aboutCurrent = 0;
+const aboutImgs = document.querySelectorAll('.about-img');
+const aboutCaptions = document.querySelectorAll('.about-caption .caption-box');
+
+function showAboutSlide(idx) {
+  aboutImgs.forEach((img, i) => img.classList.toggle('active', i === idx));
+  aboutCaptions.forEach((cap, i) => cap.classList.toggle('active', i === idx));
+}
+
+function changeAboutSlide(dir) {
+  aboutCurrent += dir;
+  if (aboutCurrent < 0) aboutCurrent = aboutImgs.length - 1;
+  if (aboutCurrent >= aboutImgs.length) aboutCurrent = 0;
+  showAboutSlide(aboutCurrent);
+}
+
+// Inisialisasi
+document.addEventListener('DOMContentLoaded', () => {
+  showAboutSlide(aboutCurrent);
+});
+
+// Skill Bar Animation
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.skill-fill').forEach(function (el) {
+    const percent = el.getAttribute('data-percent');
+    el.style.width = percent;
+  });
+});
+
+// Scroll smooth ke section berikutnya saat klik tombol panah di hero
+document.querySelectorAll('.hero-slider-controls button').forEach((btn, idx, arr) => {
+  btn.addEventListener('dblclick', () => {
+    // Scroll ke section setelah hero
+    const nextSection = document.querySelector('.hero-slider').nextElementSibling;
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// Tutup menu hamburger setelah klik salah satu menu (mobile)
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', function () {
+    const menuToggle = document.getElementById('menu-toggle');
+    if (menuToggle && menuToggle.checked) {
+      menuToggle.checked = false;
+    }
+  });
 });

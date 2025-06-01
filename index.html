@@ -23,8 +23,8 @@
         style="position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;background:#f3f4f6;border:none;box-shadow:0 2px 8px #e0e7ef;font-size:1.7rem;line-height:1;color:#888;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
         onmouseover="this.style.background='#e11d48';this.style.color='#fff';"
         onmouseout="this.style.background='#f3f4f6';this.style.color='#888';" aria-label="Tutup">&times;</button>
-      <img src="https://media1.tenor.com/images/bdd964b282247a2501eb232e0b8b822e/tenor.gif?itemid=13920167" alt="Logo"
-        style="width:80px;height:80px;margin-bottom:1rem;">
+      <img src="https://media1.tenor.com/images/bdd964b282247a2501eb232e0b8b822e/tenor.gif?itemid=13920167"
+        loading="lazy" alt="Logo" style="width:80px;height:80px;margin-bottom:1rem;">
       <h2 style="font-family:'Roboto Condensed',Arial,sans-serif;font-weight:700;margin-bottom:0.7rem;">Selamat Datang
       </h2>
       <p style="font-size:1.1rem;margin-bottom:1.2rem;">Terima kasih telah mengunjungi blog ini!</p>
@@ -35,10 +35,10 @@
     <!-- Header / Navbar -->
     <div class="container">
       <a href="#" class="logo">
-        <img src="assets/images/logobygpt.png" alt="Logo" id="navbar-logo">
+        <img src="assets/images/logobygpt.png" alt="Logo">
       </a>
       <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <label for="menu-toggle" aria-label="Toggle menu" class="menu-icon">&#9776;</label>
       <nav>
         <a href="#home">Home</a>
         <a href="content/main.html">Wiki</a>
@@ -51,30 +51,33 @@
   </header>
   <!-- Home Section -->
   <section class="hero-slider" id="home">
+    <div class="hero-slides">
+      <div class="hero-slide active" style="background-image: url('assets/images/ANAKMUDA.jpeg');">
+        <div class="hero-caption">
+          <h1 style="font-size:3rem;font-weight:800;letter-spacing:2px;margin-bottom:1rem;">Selamat Datang</h1>
+          <h2>Di Blog Portofolia Sederhana Saya</h2>
+          <p>Saya menerima berbagai macam pekerjaan jasa khususnya dalam bidang Informasi dan Teknologi</p>
+        </div>
+      </div>
+      <div class="hero-slide" style="background-image: url('assets/images/PSB.jpeg');">
+        <div class="hero-caption">
+          <h2>PEMASANGAN INTERNET RUMAH</h2>
+          <p>Pemasangan WiFi secara Professional untuk memastikan kualitas dan kenyamanan anda</p>
+        </div>
+      </div>
+      <div class="hero-slide" style="background-image: url('assets/images/CCTV.jpeg');">
+        <div class="hero-caption">
+          <h2>INSTALASI CCTV</h2>
+          <p>Instalasi Perangkat Keamanan Semua Tipe</p>
+        </div>
+      </div>
+      <div class="hero-slide" style="background-image: url('assets/images/PROFESSIONAL.jpeg');">
+        <div class="hero-caption">
+          <h2>PROFESSIONALITAS</h2>
+          <p>Pekerjaan Tetap Dilakukan Kapan dan Dimana Pun</p>
+        </div>
+      </div>
 
-    <div class="hero-slide active" style="background-image: url('assets/images/PSB.jpeg');">
-      <div class="hero-caption">
-        <h2>PEMASANGAN INTERNET RUMAH</h2>
-        <p>Pemasangan Internet Rumah atau WiFi tidak sembarangan, dengan memperhatikan kualitas dan kerapian</p>
-      </div>
-    </div>
-    <div class="hero-slide" style="background-image: url('assets/images/CCTV.jpeg');">
-      <div class="hero-caption">
-        <h2>INSTALASI CCTV</h2>
-        <p>Meningkatkan keamanan dan kenyamanan lokasi</p>
-      </div>
-    </div>
-    <div class="hero-slide" style="background-image: url('assets/images/PROFESSIONAL.jpeg');">
-      <div class="hero-caption">
-        <h2>PROFESSIONALITAS</h2>
-        <p>Pekerjaan Diselesaikan Secepat Mungkin</p>
-      </div>
-    </div>
-    <div class="hero-slide" style="background-image: url('assets/images/ANAKMUDA.jpeg');">
-      <div class="hero-caption">
-        <h2>ALL GENERATION</h2>
-        <p>Tim kami terdiri dari berbagai kalangan yang melek teknologi sehingga tidak tertinggal oleh zaman</p>
-      </div>
     </div>
     <div class="hero-slider-controls">
       <button class="hero-slider-btn active" data-slide="0"></button>
@@ -85,60 +88,49 @@
   </section>
   <!-- Gallery Section -->
   <hr>
-  <div style="margin-top:18px;text-align:center;">
-    <div style="font-size:1.05rem;color:#2563eb;font-weight:600;margin-bottom:0.3rem;">Music Player biar ga boring amat
+  <!-- BAGIAN KEDUA -->
+  <section id="about" class="section-about">
+    <div class="about-header">
+      <button onclick="changeAboutSlide(-1)">&#10094;</button>
+      <h2 id="about-title">JASA</h2>
+      <button onclick="changeAboutSlide(1)">&#10095;</button>
     </div>
-    <iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/userboo1/jkt48-seventeen&color=%232563eb&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-    </iframe>
-  </div>
-  </div>
-  <hr>
-  <section class="slider" id="projects">
-    <h2 style="text-decoration: underline; text-align:center;">Galeri Singkat</h2>
-    <div class="slides-wrapper">
-      <div class="slide">
-        <div class="slide-card">
-          <img src="assets/images/pole.jpeg" alt="Proyek Jaringan">
-          <div class="card-content">
-            <h3>Penanaman Tiang</h3>
-            <p>Penanaman tiang yang digunakan dalam pendistribusian jaringan dengan media Fiber Optic</p>
-          </div>
+    <div class="about-content">
+      <div class="about-image-container">
+        <img loading="lazy" src="assets/images/pole.jpeg" class="about-img active" alt="img1">
+        <img loading="lazy" src="assets/images/PROFESSIONAL.jpeg" class="about-img" alt="img2">
+        <img loading="lazy" src="assets/images/PSB.jpeg" class="about-img" alt="img3">
+      </div>
+      <div class="about-caption">
+        <div class="caption-box active">
+          <h2>PEKERJAAN</h2>
+          <p>"Bro, sis, jujur aja ya... lagi kena syndrome mager akut nih. Niatnya sih mau nulis yang estetik,
+            filosofis, penuh makna gitu, tapi kenyataannya malah scroll TikTok sampe baterai lowbat. Jadi yaa... mohon
+            dimaklumi kalau deskripsi ini cuma sekadar biar nggak kosong doang. Tulisannya sih random, tapi hatinya
+            tetap tulus kok 😎✌️. Tungguin aja ya, siapa tau suatu saat nanti dapet ilham pas mandi atau lagi nunggu mie
+            instan mateng. Untuk sekarang, nikmati dulu visualnya, karena tulisan belum vibes-nya~ 😅🔥"</p>
+        </div>
+        <!-- ...caption-box lain jika perlu... -->
+        <div class="caption-box">
+          <h2>REVIEW</h2>
+          <p>"Yaa... sebenernya niat awalnya mau nulis deskripsi epic, penuh semangat dan motivasi hidup gitu. Tapi
+            kenyataannya? Gagal fokus tiap lima detik karena kepikiran waifu tercinta 🥲💕. Tiap mau ngetik satu
+            kalimat, langsung ke-distract sama senyumnya Rem, kelakuan imutnya Anya, atau tatapan tajam Yor-san pas lagi
+            serious mode. Jadi yah... maafkeun kalau deskripsi ini kosong makna, karena hatiku udah penuh oleh cinta 2D
+            😔✨. Doakan aja suatu saat bisa balik ke dunia nyata dan nulis dengan benar, tapi untuk sekarang... izinkan
+            saya mengabdi pada dunia khayalan dulu. Mata, kata, dan cinta ini... hanya untuk waifu 😭💖."</p>
+        </div>
+        <div class="caption-box">
+          <h2>LAINNYA</h2>
+          <p>"Bro... jujur aja, nulis deskripsi panjang tuh bukan prioritas gue sekarang. Fokus gue lagi ke hal-hal yang
+            lebih penting... kayak ngelatih disiplin, ngejar mimpi, dan tentu aja, ngebentuk otot biar mental nggak
+            letoy 💪🔥. Nulis bisa nanti, tapi push-up gak nunggu. Jadi kalau lo nyari kata-kata puitis atau kutipan
+            motivasi, sabar dulu. Sekarang gue lagi dalam mode ‘diam tapi menggetarkan’. Isi deskripsi ini? Cuma
+            pengalihan biar halaman nggak kosong. Tapi percaya, karya gue yang lain lebih bicara daripada sekadar
+            kata-kata. Karena di dunia ini, aksi lebih keras suaranya dari tulisan 😎."
+          </p>
         </div>
       </div>
-      <div class="slide">
-        <div class="slide-card">
-          <img src="assets/images/ftthmaintenance.jpeg" alt="Maintenances">
-          <div class="card-content">
-            <h3>Fiber Maintenances</h3>
-            <p>Pemeliharaan serta perbaikan fiber optic dengan estimasi waktu sesegera mungkin</p>
-          </div>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="slide-card">
-          <img src="assets/images/backbonefig8.jpeg" alt="Backbone">
-          <div class="card-content">
-            <h3>Penarikan Backbone</h3>
-            <p>Penarikan backbone tipe Kabel ADSS di area Sungai Rumbai bersama di Runsnet</p>
-          </div>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="slide-card">
-          <img src="assets/images/IMG-20221219-POPCDE.jpg" alt="Instalasi POP">
-          <div class="card-content">
-            <h3>Instalasi POP untuk PT CDE</h3>
-            <p>Berlokasi di Teluk Sepang, Pulau BAAI</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="slider-controls">
-      <button onclick="moveSlide(0)">1</button>
-      <button onclick="moveSlide(1)">2</button>
-      <button onclick="moveSlide(2)">3</button>
-      <button onclick="moveSlide(3)">4</button>
     </div>
   </section>
   <!-- Skills Section -->
@@ -191,18 +183,32 @@
   </section>
   <!-- About Me Section -->
   <section class="aboutme">
+    <h2 style="text-align: center;">Hiburan</h2>
+    <h3>Sedikit Hiburan agar tidak boring</h3>
+    <iframe style="align-items: center;" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1324534807&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/0Ysr_uOE1Uc?si=h_F1qU_19NyuZYLQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div
+      style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+      <a href="https://soundcloud.com/userboo1" title="boo" target="_blank"
+        style="color: #cccccc; text-decoration: none;">boo</a> · <a
+        href="https://soundcloud.com/userboo1/jkt48-seventeen" title="Seventeen" target="_blank"
+        style="color: #cccccc; text-decoration: none;">Seventeen</a>
+    </div>
+  </section>
+  <section class="aboutme">
     <h2>Tentang Saya</h2>
-    <p>Hanyalah seorang aktivis yang secara aktif mengikuti perkembangan dunia teknologi. Dan saat ini sedang aktif
-      bekerja sebagai teknisi di salah satu Penyedia Jasa Layanan Internet lokal Bengkulu</p>
+    <p>Praktisi IT dengan pendidikan Sebatas SMK dan belajar dari banyak pengalaman teman-teman di bidang yang sama</p>
     <br>
     <button class="tomboldekoratif">Biografi</button>
   </section>
+
   <hr style="margin:2.5rem auto 1.5rem auto;max-width:700px;">
   <!-- Contact -->
   <footer class="footer-contact" id="contact">
     <div class="footer-contact-list">
       <a href="mailto:yosyapanjaitan0@gmail.com" target="_blank" title="Email"><img
-          src="src/img/Android_Email_4.4_Icon.png" alt="">Email</a>
+          src="src/img/Android_Email_4.4_Icon.png" loading="lazy" alt="logo email">Email</a>
       <a href="https://wa.me/6285874137148" target="_blank" title="WhatsApp"><img
           src="src/img/—Pngtree—whatsapp icon whatsapp logo_3584844.png" alt="Deskripsi Simbol"
           style="width:2rem; height:2rem;"> WhatsApp</a>

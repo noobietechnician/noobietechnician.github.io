@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daftar Isi Wiki IOCCIA</title>
-  <link rel="stylesheet" href="../src/css/style.css" />
+  <link rel="stylesheet" href="../src/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
     .wiki-container {
@@ -13,8 +17,9 @@
       padding: 2rem 1rem;
       background: #fff;
       border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
     }
+
     .wiki-title {
       text-align: center;
       font-size: 2rem;
@@ -23,6 +28,7 @@
       margin-bottom: 1.5rem;
       letter-spacing: 1px;
     }
+
     .wiki-search {
       width: 100%;
       padding: 12px;
@@ -32,12 +38,15 @@
       margin-bottom: 20px;
       box-sizing: border-box;
     }
+
     .wiki-list {
-      list-style: none;   /* Ubah dari 'decimal inside' menjadi 'none' */
+      list-style: none;
+      /* Ubah dari 'decimal inside' menjadi 'none' */
       padding: 0;
       margin: 0 0 1.5rem 0;
       font-size: 1.08rem;
     }
+
     .wiki-list li {
       margin-bottom: 10px;
       padding: 0.4rem 0.8rem;
@@ -45,6 +54,7 @@
       background: #f3f6fd;
       transition: background 0.2s;
     }
+
     .wiki-list li a {
       color: #2563eb;
       text-decoration: none;
@@ -52,15 +62,18 @@
       transition: color 0.2s;
       display: block;
     }
+
     .wiki-list li a:hover {
       color: #1742a0;
       text-decoration: underline;
     }
+
     .pagination {
       display: flex;
       justify-content: space-between;
       margin-top: 20px;
     }
+
     .pagination button {
       padding: 10px 16px;
       border: none;
@@ -71,17 +84,21 @@
       cursor: pointer;
       transition: background 0.2s;
     }
+
     .pagination button:disabled {
       background-color: #ccc;
       cursor: not-allowed;
     }
+
     @media (max-width: 600px) {
       .wiki-container {
         padding: 1rem 0.3rem;
       }
+
       .wiki-title {
         font-size: 1.2rem;
       }
+
       .pagination {
         flex-direction: column;
         gap: 10px;
@@ -90,17 +107,22 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="container">
-      <div class="logo">IOCCIA</div>
+      <a href="#" class="logo">
+        <img src="../assets/images/logobygpt.png" alt="Logo">
+      </a>
       <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <label for="menu-toggle" aria-label="Toggle menu" class="menu-icon">&#9776;</label>
       <nav>
-        <a href="../index.html#home">Home</a>
+        <a href="../index.html">Home</a>
+        <a href="#">Wiki</a>
+        <a href="#">Berita Acara</a>
+        <a href="#">Galeri</a>
+        <a href="#contact">Kontak</a>
         <a href="../aboutme/aboutme.html">Tentang Saya</a>
-        <a href="iocciwiki.html">Wiki</a>
-        <a href="../index.html#contact">Kontak</a>
       </nav>
     </div>
   </header>
@@ -116,6 +138,7 @@
       </div>
     </div>
   </main>
+  <div id="footer-placeholder"></div>
   <script>
     let articles = [];
     let filteredArticles = [];
@@ -175,5 +198,19 @@
     prevBtn.addEventListener("click", () => { currentPage--; renderList(); });
     nextBtn.addEventListener("click", () => { currentPage++; renderList(); });
   </script>
+  <script id="contact">
+    fetch('../src/footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <script src="../src/js/firebase-init.js"></script>
+  <script src="../src/js/main.js"></script>
+  <script src="../src/js/script.js"></script>
+  <script src="assets/about.js"></script>
 </body>
+
 </html>
