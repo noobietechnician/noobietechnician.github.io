@@ -11,4 +11,4 @@ const firebaseConfig = {
 
 // Inisialisasi Firebase
 firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+window.db = firebase.database(); // <-- agar global
