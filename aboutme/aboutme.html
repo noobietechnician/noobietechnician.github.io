@@ -16,7 +16,7 @@
 
 <body>
   <header>
-     <div class="container">
+    <div class="container">
       <a href="#" class="logo">
         <img src="../assets/images/logobygpt.png" alt="Logo">
       </a>
@@ -32,10 +32,11 @@
       </nav>
     </div>
   </header>
-
+  <!-- Title -->
   <main style="max-width:700px;margin:90px auto 0 auto;padding:1rem;">
     <h1 style="text-align:center;">Perjalanan Karir Saya</h1>
 
+    <!-- Bagian Profil dan Kata Kata Hari ini -->
     <div class="profile-box">
       <img src="assets/profile.jpeg" alt="Foto Profil IOCCIA" class="profile-img">
       <div class="profile-quotes">
@@ -45,9 +46,10 @@
         <span class="quotes-author">- Wibu Lagi Yapping</span>
       </div>
     </div>
-
+    <!-- Tombol TimeLine dan isi -->
     <button class="toggle-timeline-btn" onclick="toggleTimeline()">Spill Timeline</button>
     <section id="timelineSection" class="timeline">
+      <!-- Time Line Pertama-->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-date">OKT 2020</div>
@@ -56,9 +58,9 @@
           <p style="font-style: italic;">Cuma dapat nangkring di peringkat 4</p>
           <a class="gallery-btn" id="showNotification" href="#" title="Lihat detail"
             style="margin-top:0.7rem;display:inline-block;">Galeri &#8594;</a>
-
         </div>
       </div>
+      <!-- Timeline Kedua -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-date">JUL 2021</div>
@@ -67,6 +69,7 @@
           <p style="font-style: italic;">Lulus dan menganggur selama beberapa bulan</p>
         </div>
       </div>
+      <!-- Timeline Ketiga -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-date">NOV 2021</div>
@@ -78,7 +81,6 @@
             memberikan kesempatan kepada saya.</p>
           <a class="gallery-btn" id="showNotification" href="#" title="Lihat Galeri"
             style="margin-top:0.7rem;display:inline-block;">Galeri &#8594;</a>
-
           <div id="notification" class="notification hidden">
             <span class="notif-icon">&#10060;</span>
             <span class="notif-text">Belum ada Galeri</span>
@@ -86,6 +88,7 @@
         </div>
       </div>
       </div>
+      <!-- Timeline Keempat -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-date">JUL 2024</div>
@@ -97,9 +100,9 @@
             di Rubyan yang telah menerima dan memberikan kesempatan pada saya</p>
           <a class="gallery-btn" id="showNotification" href="#" title="Lihat Galeri"
             style="margin-top:0.7rem;display:inline-block;">Galeri &#8594;</a>
-
         </div>
       </div>
+      <!-- Timeline Kelima -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-date">JUL 2025</div>
@@ -111,14 +114,13 @@
           </p>
           <a class="gallery-btn" id="showNotification" href="#" title="Lihat detail"
             style="margin-top:0.7rem;display:inline-block;">Galeri &#8594;</a>
-
         </div>
       </div>
     </section>
-
   </main>
-  <div id="footer-placeholder"></div>
 
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
   <script>
     function toggleTimeline() {
       const section = document.getElementById('timelineSection');
@@ -132,6 +134,7 @@
         document.getElementById('footer-placeholder').innerHTML = data;
       });
   </script>
+  <!-- external links for js -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
   <script src="../src/js/firebase-init.js"></script>
