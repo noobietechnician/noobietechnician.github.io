@@ -5,11 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PERSONAL PORTOFOLIO</title>
-  <link rel="icon" href="assets/images/android-chrome-192x192.png" type="image/x-icon">
+  <link rel="icon" href="images/icons/kazuma.png" type="image/x-icon">
   <link rel="stylesheet" href="src/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet"> <!--font-->
   <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
 </head>
 
@@ -36,7 +36,7 @@
     <!-- Header / Navbar -->
     <div class="container">
       <a href="#" class="logo">
-        <img src="assets/images/logobygpt.png" alt="Logo">
+        <img src="images/icons/logobygpt.png" alt="Logo">
       </a>
       <input type="checkbox" id="menu-toggle">
       <label for="menu-toggle" aria-label="Toggle menu" class="menu-icon">&#9776;</label>
@@ -54,26 +54,26 @@
   <!-- Home or Hero Section -->
   <section class="hero-slider" id="home">
     <div class="hero-slides">
-      <div class="hero-slide active" style="background-image: url('assets/images/ANAKMUDA.jpeg');">
+      <div class="hero-slide active" style="background-image: url('images/heroslideimgs/myteams.jpeg');">
         <div class="hero-caption">
           <h1 style="font-size:3rem;font-weight:800;letter-spacing:2px;margin-bottom:1rem;">Selamat Datang</h1>
           <h2>Di Blog Portofolia Sederhana Saya</h2>
           <p>Saya menerima berbagai macam pekerjaan jasa khususnya dalam bidang Informasi dan Teknologi</p>
         </div>
       </div>
-      <div class="hero-slide" style="background-image: url('assets/images/PSB.jpeg');">
+      <div class="hero-slide" style="background-image: url('images/heroslideimgs/runsnet-newpsb.jpeg');">
         <div class="hero-caption">
           <h2>PEMASANGAN INTERNET RUMAH</h2>
           <p>Pemasangan WiFi secara Professional untuk memastikan kualitas dan kenyamanan anda</p>
         </div>
       </div>
-      <div class="hero-slide" style="background-image: url('assets/images/CCTV.jpeg');">
+      <div class="hero-slide" style="background-image: url('images/heroslideimgs/rns-cctvinstallation.jpeg');">
         <div class="hero-caption">
           <h2>INSTALASI CCTV</h2>
           <p>Instalasi Perangkat Keamanan Semua Tipe</p>
         </div>
       </div>
-      <div class="hero-slide" style="background-image: url('assets/images/PROFESSIONAL.jpeg');">
+      <div class="hero-slide" style="background-image: url('images/heroslideimgs/runsnet-urgent.jpeg');">
         <div class="hero-caption">
           <h2>PROFESSIONALITAS</h2>
           <p>Pekerjaan Tetap Dilakukan Kapan dan Dimana Pun</p>
@@ -100,9 +100,9 @@
     </div>
     <div class="about-content">
       <div class="about-image-container">
-        <img loading="lazy" src="assets/images/pole.jpeg" class="about-img active" alt="img1">
-        <img loading="lazy" src="assets/images/PROFESSIONAL.jpeg" class="about-img" alt="img2">
-        <img loading="lazy" src="assets/images/PSB.jpeg" class="about-img" alt="img3">
+        <img loading="lazy" src="images/contents/addi-jointer.jpeg" class="about-img active" alt="img1">
+        <img loading="lazy" src="images/contents/backbonefig8.jpeg" class="about-img" alt="img2">
+        <img loading="lazy" src="images/contents/ljn-popcdepbaai.jpg" class="about-img" alt="img3">
       </div>
       <div class="about-caption">
         <div class="caption-box active">
@@ -214,55 +214,21 @@
 
   <hr style="margin:2.5rem auto 1.5rem auto;max-width:700px;">
 
-  <!-- Contact -->
-  <footer class="footer-contact" id="contact">
-    <div class="footer-contact-list">
-      <a href="mailto:yosyapanjaitan0@gmail.com" target="_blank" title="Email"><img
-          src="src/img/Android_Email_4.4_Icon.png" loading="lazy" alt="logo email">Email</a>
-      <a href="https://wa.me/6285874137148" target="_blank" title="WhatsApp"><img
-          src="src/img/—Pngtree—whatsapp icon whatsapp logo_3584844.png" alt="Deskripsi Simbol"
-          style="width:2rem; height:2rem;"> WhatsApp</a>
-      <!-- <a href="https://github.com/yourusername" target="_blank" title="GitHub">🐙 GitHub</a> -->
-      <!-- <a href="#" target="_blank" title="LinkedIn">🔗 LinkedIn</a> -->
-      <a href="https://t.me/yosiapanjaitan" target="_blank" title="Telegram"><img
-          src="src/img/64px-Telegram_logo.svg.png" alt=""> Telegram</a>
-    </div>
-
-    <!-- Client Side -->
-    <div style="display: flex; justify-content: center; margin-top:1.5rem;">
-      <table
-        style="background:#f8fafc;border-radius:10px;box-shadow:0 2px 8px #e0e7ef;padding:0.7rem 1.2rem;font-size:0.98rem;">
-        <tr>
-          <td style="padding:0.4rem 1.2rem;font-weight:600;">👁️ Jumlah Pengunjung</td>
-          <td id="visitor-count" style="padding:0.4rem 1.2rem;">...</td>
-        </tr>
-        <tr>
-          <td style="padding:0.4rem 1.2rem;font-weight:600;">🌐 IP Kamu</td>
-          <td id="client-ip" style="padding:0.4rem 1.2rem;">...</td>
-        </tr>
-        <tr>
-          <td style="padding:0.4rem 1.2rem;font-weight:600;">📍 Lokasi</td>
-          <td id="client-location" style="padding:0.4rem 1.2rem;">...</td>
-        </tr>
-        <tr>
-          <td style="padding:0.4rem 1.2rem;font-weight:600;">⏰ Waktu</td>
-          <td id="client-time" style="padding:0.4rem 1.2rem;">...</td>
-        </tr>
-      </table>
-    </div>
-    <hr>
-    <p style="font-style: italic;">@2025 Seluruh elemen blog dibantu digenerate oleh AI dan Dihosting Menggunakan
-      Github Pages</p>
-  </footer>
-
+  <!-- Footer Section -->
+   <div id="footer-placeholder"></div>
+  <script id="contact">
+    fetch('../src/footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+  </script>
   <!-- EXTERNAL JS SCRIPTS -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
   <script src="src/js/firebase-init.js"></script>
   <script src="src/js/main.js"></script>
   <script src="src/js/script.js"></script>
+  <script src="src/js/aboutme.js"></script>
 </body>
-
 </html>
-
-<!-- Thanks -->
