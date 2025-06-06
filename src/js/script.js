@@ -157,10 +157,76 @@ const AppUI = (() => {
     });
   }
 
+  function setupCommentForm() {
+    const form = document.getElementById('comment-form');
+    const input = document.getElementById('comment-input');
+    if (!form || !input) return;
+
+    form.onsubmit = function (e) {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text) {
+        showCommentNotif('Komentar tidak boleh kosong!', false);
+        return;
+      }
+      const commentObj = {
+        text,
+        time: new Date().toLocaleString('id-ID')
+      };
+      if (window.db) {
+        db.ref('comments').push(commentObj)
+          .then(() => {
+            input.value = '';
+            renderComments();
+            showCommentNotif('Komentar berhasil dikirim!', true);
+          })
+          .catch(() => {
+            showCommentNotif('Gagal mengirim komentar. Coba lagi!', false);
+          });
+      } else {
+        try {
+          let comments = JSON.parse(localStorage.getItem('comments') || '[]');
+          comments.push(commentObj);
+          localStorage.setItem('comments', JSON.stringify(comments));
+          input.value = '';
+          renderComments();
+          showCommentNotif('Komentar berhasil dikirim (lokal)!', true);
+        } catch {
+          showCommentNotif('Gagal menyimpan komentar di browser!', false);
+        }
+      }
+    };
+  }
+
+  // Notifikasi komentar
+  function showCommentNotif(msg, success) {
+    let notif = document.getElementById('comment-notif');
+    if (!notif) {
+      notif = document.createElement('div');
+      notif.id = 'comment-notif';
+      notif.style.position = 'fixed';
+      notif.style.top = '20px';
+      notif.style.left = '50%';
+      notif.style.transform = 'translateX(-50%)';
+      notif.style.zIndex = '9999';
+      notif.style.padding = '0.8rem 1.5rem';
+      notif.style.borderRadius = '10px';
+      notif.style.fontWeight = 'bold';
+      notif.style.fontFamily = "'Roboto Condensed', Arial, sans-serif";
+      notif.style.boxShadow = '0 2px 12px #e0e7ef';
+      document.body.appendChild(notif);
+    }
+    notif.textContent = msg;
+    notif.style.background = success ? '#22c55e' : '#ef4444';
+    notif.style.color = '#fff';
+    notif.style.display = 'block';
+    setTimeout(() => { notif.style.display = 'none'; }, 2200);
+  }
+
   // --- Render Comments ---
   function renderComments() {
     const commentsList = document.getElementById('comments-list');
-    if (!commentsList) return; // <-- Tambahkan baris ini
+    if (!commentsList) return;
     if (window.db) {
       db.ref('comments').once('value').then(snapshot => {
         let comments = snapshot.val();
@@ -171,22 +237,24 @@ const AppUI = (() => {
           commentsList.innerHTML = '<div style="color:#888;font-size:0.98rem;">Belum ada komentar.</div>';
           return;
         }
-        commentsList.innerHTML = comments.map(c =>
+        // Komentar terbaru di atas
+        commentsList.innerHTML = comments.reverse().map(c =>
           `<div style="background:#f8fafc;margin-bottom:0.7rem;padding:0.7rem 1rem;border-radius:8px;box-shadow:0 1px 4px #e0e7ef;font-size:1.05rem;">
           <div style="color:#2563eb;font-size:0.92rem;font-weight:700;">Anonymous</div>
           <div style="margin:0.3rem 0 0.4rem 0;">${c.text || ''}</div>
           <div style="font-size:0.88rem;color:#888;">${c.time || ''}</div>
         </div>`
         ).join('');
+      }).catch(() => {
+        commentsList.innerHTML = '<div style="color:#ef4444;">Gagal memuat komentar dari server.</div>';
       });
     } else {
-      // Fallback LocalStorage
       let comments = JSON.parse(localStorage.getItem('comments') || '[]');
       if (!comments.length) {
         commentsList.innerHTML = '<div style="color:#888;font-size:0.98rem;">Belum ada komentar.</div>';
         return;
       }
-      commentsList.innerHTML = comments.map(c =>
+      commentsList.innerHTML = comments.reverse().map(c =>
         `<div style="background:#f8fafc;margin-bottom:0.7rem;padding:0.7rem 1rem;border-radius:8px;box-shadow:0 1px 4px #e0e7ef;font-size:1.05rem;">
         <div style="color:#2563eb;font-size:0.92rem;font-weight:700;">Anonymous</div>
         <div style="margin:0.3rem 0 0.4rem 0;">${c.text}</div>
@@ -218,6 +286,7 @@ const AppUI = (() => {
     setupHamburgerMenu();
     setupAboutMeNotification();
     setupCommentToggle();
+    setupCommentForm();
     renderComments();
     renderVisitorCount();
   }
