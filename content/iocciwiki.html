@@ -43,7 +43,60 @@
   </main>
   <div id="footer-placeholder"></div>
   <script>
-    
+let wikiData = [];
+const tocList = document.getElementById('toc-list');
+const searchInput = document.getElementById('search');
+const itemsPerPage = 10;
+let currentPage = 1;
+
+function renderList(data, page = 1) {
+  const start = (page - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const pageData = data.slice(start, end);
+  tocList.innerHTML = pageData.map(item =>
+    `<li><a href="${item.link}">${item.title}</a></li>`
+  ).join('');
+}
+
+function updatePagination(data) {
+  document.getElementById('prev').disabled = currentPage === 1;
+  document.getElementById('next').disabled = currentPage * itemsPerPage >= data.length;
+}
+
+fetch('../src/others/wikilist.json')
+  .then(res => res.json())
+  .then(data => {
+    wikiData = data;
+    renderList(wikiData, currentPage);
+    updatePagination(wikiData);
+  });
+
+searchInput.addEventListener('input', function () {
+  const keyword = this.value.toLowerCase();
+  const filtered = wikiData.filter(item => item.title.toLowerCase().includes(keyword));
+  currentPage = 1;
+  renderList(filtered, currentPage);
+  updatePagination(filtered);
+});
+
+document.getElementById('prev').addEventListener('click', function () {
+  if (currentPage > 1) {
+    currentPage--;
+    const keyword = searchInput.value.toLowerCase();
+    const filtered = wikiData.filter(item => item.title.toLowerCase().includes(keyword));
+    renderList(filtered, currentPage);
+    updatePagination(filtered);
+  }
+});
+document.getElementById('next').addEventListener('click', function () {
+  const keyword = searchInput.value.toLowerCase();
+  const filtered = wikiData.filter(item => item.title.toLowerCase().includes(keyword));
+  if (currentPage * itemsPerPage < filtered.length) {
+    currentPage++;
+    renderList(filtered, currentPage);
+    updatePagination(filtered);
+  }
+});
   </script>
   <script id="contact">
     fetch('../src/footer.html')

@@ -160,16 +160,51 @@ const AppUI = (() => {
   // --- Render Comments ---
   function renderComments() {
     const commentsList = document.getElementById('comments-list');
+    if (!commentsList) return; // <-- Tambahkan baris ini
     if (window.db) {
-      // gunakan window.db
       db.ref('comments').once('value').then(snapshot => {
-        const comments = snapshot.val() || [];
-        // render comments dari Firebase
+        let comments = snapshot.val();
+        if (comments && !Array.isArray(comments)) {
+          comments = Object.values(comments);
+        }
+        if (!comments || comments.length === 0) {
+          commentsList.innerHTML = '<div style="color:#888;font-size:0.98rem;">Belum ada komentar.</div>';
+          return;
+        }
+        commentsList.innerHTML = comments.map(c =>
+          `<div style="background:#f8fafc;margin-bottom:0.7rem;padding:0.7rem 1rem;border-radius:8px;box-shadow:0 1px 4px #e0e7ef;font-size:1.05rem;">
+          <div style="color:#2563eb;font-size:0.92rem;font-weight:700;">Anonymous</div>
+          <div style="margin:0.3rem 0 0.4rem 0;">${c.text || ''}</div>
+          <div style="font-size:0.88rem;color:#888;">${c.time || ''}</div>
+        </div>`
+        ).join('');
       });
     } else {
       // Fallback LocalStorage
       let comments = JSON.parse(localStorage.getItem('comments') || '[]');
-      // render comments dari LocalStorage
+      if (!comments.length) {
+        commentsList.innerHTML = '<div style="color:#888;font-size:0.98rem;">Belum ada komentar.</div>';
+        return;
+      }
+      commentsList.innerHTML = comments.map(c =>
+        `<div style="background:#f8fafc;margin-bottom:0.7rem;padding:0.7rem 1rem;border-radius:8px;box-shadow:0 1px 4px #e0e7ef;font-size:1.05rem;">
+        <div style="color:#2563eb;font-size:0.92rem;font-weight:700;">Anonymous</div>
+        <div style="margin:0.3rem 0 0.4rem 0;">${c.text}</div>
+        <div style="font-size:0.88rem;color:#888;">${c.time}</div>
+      </div>`
+      ).join('');
+    }
+  }
+
+  // --- Render Visitor Count ---
+  function renderVisitorCount() {
+    const el = document.getElementById('visitor-count');
+    if (window.db && el) {
+      db.ref('visitorCount').on('value', snapshot => {
+        el.textContent = snapshot.val() || 0;
+      });
+    } else if (el) {
+      el.textContent = 'Tidak tersedia';
     }
   }
 
@@ -184,6 +219,7 @@ const AppUI = (() => {
     setupAboutMeNotification();
     setupCommentToggle();
     renderComments();
+    renderVisitorCount();
   }
 
   document.addEventListener('DOMContentLoaded', init);
@@ -191,3 +227,49 @@ const AppUI = (() => {
   // Expose for debug or external use if needed
   return { slider, hero, about };
 })();
+
+// Update waktu lokal di elemen #client-time
+function updateLocalTime() {
+  const el = document.getElementById('client-time');
+  if (!el) return;
+  const now = new Date();
+  const waktu = now.toLocaleString('id-ID', {
+    weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  });
+  el.textContent = waktu;
+}
+
+// Jalankan saat halaman dimuat dan perbarui setiap detik
+document.addEventListener('DOMContentLoaded', () => {
+  updateLocalTime();
+  setInterval(updateLocalTime, 1000);
+});
+
+/*
+fetch('https://ipapi.co/json/')
+  .then(res => res.json())
+  .then data => {
+    document.getElementById('client-ip').textContent = data.ip || 'Tidak diketahui';
+    let lokasi = '';
+    if (data.city) lokasi += data.city + ', ';
+    if (data.region) lokasi += data.region + ', ';
+    if (data.country_name) lokasi += data.country_name;
+    document.getElementById('client-location').textContent = lokasi || 'Tidak diketahui';
+  })
+  .catch(() => {
+    document.getElementById('client-ip').textContent = 'Tidak diketahui';
+    document.getElementById('client-location').textContent = 'Tidak diketahui';
+  });
+
+function updateTime() {
+  const now = new Date();
+  const waktu = now.toLocaleString('id-ID', {
+    weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  });
+  document.getElementById('client-time').textContent = waktu;
+}
+setInterval(updateTime, 1000);
+updateTime();
+*/
