@@ -1,45 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HELLO WORLD</title>
+  <meta charset="UTF-8">
+  <title>WARNING!</title>
   <style>
-    /* Reset margin dan padding default */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* Animasi background berkedip warna */
+    @keyframes flashBackground {
+      0% { background-color: #ff0000; }
+      25% { background-color: #ffff00; }
+      50% { background-color: #00ff00; }
+      75% { background-color: #00ffff; }
+      100% { background-color: #ff00ff; }
+    }
+
+    /* Animasi teks berkedip dan bergetar */
+    @keyframes blinkShake {
+      0% { opacity: 1; transform: translate(0, 0); }
+      25% { opacity: 0.8; transform: translate(2px, -2px); }
+      50% { opacity: 1; transform: translate(-2px, 2px); }
+      75% { opacity: 0.8; transform: translate(2px, 2px); }
+      100% { opacity: 1; transform: translate(0, 0); }
     }
 
     body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #f2f2f2, #d6e0f5);
+      animation: flashBackground 1s infinite;
       font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding-top: 50px;
+      transition: background-color 0.5s;
     }
 
     h1 {
-      font-size: 5vw;
-      text-align: center;
-      color: #333;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      color: #fff;
+      font-size: 64px;
+      text-shadow: 3px 3px 8px #000;
+      animation: blinkShake 0.5s infinite;
+      margin-bottom: 20px;
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 8vw;
-      }
+    p {
+      font-size: 24px;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px #000;
     }
+
+    img {
+      margin-top: 30px;
+      max-width: 80%;
+      height: auto;
+      border: 5px solid #fff;
+      box-shadow: 0 0 20px #000;
+    }
+  .tombol-cantik {
+    display: inline-block;
+    padding: 14px 28px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .tombol-cantik:hover {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .tombol-cantik:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+</style>
   </style>
 </head>
 <body>
-  <h1>KAU DIAM</h1>
-  <br>
+  <h1>⚠️ WARNING! ⚠️</h1>
+  <p></p>
+  <img src="kaudiam.jpg" alt="KAU DIAM">
   <p>
-  <a href="https://ngl.link/tukiro">KLIK</a>
+    <a href="https://ngl.link/tukiro" class="tombol-cantik">CONFESS HERE</a>
   </p>
 </body>
 </html>
